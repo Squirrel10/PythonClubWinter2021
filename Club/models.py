@@ -13,7 +13,7 @@ class Meetings(models.Model):
 
 
     def __str__(self):
-        return self.typename
+        return self.meetingtitle
         
     class Meta:
         db_table='meetings'
@@ -26,13 +26,13 @@ class MeetingMinutes(models.Model):
 
 
     def __str__(self):
-        return self.meetingminutes
+        return self.minutes
 
     class Meta:
         db_table='meetingmintes'
 
 class Resource(models.Model):
-    resourcetitle=models.CharField(max_length=255)
+    resourcename=models.CharField(max_length=255)
     resourcetype=models.CharField(max_length=255)
     resourceurl=models.URLField()
     reviewdate=models.DateField()
@@ -41,7 +41,7 @@ class Resource(models.Model):
 
  
     def __str__(self):
-        return self.Resource
+        return self.resourcename
 
     class Meta: 
         db_table='resource'
@@ -55,7 +55,7 @@ class Event(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.Event
+        return self.eventtitle
 
     class Meta: 
         db_table='event'
