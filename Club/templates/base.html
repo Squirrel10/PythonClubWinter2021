@@ -1,7 +1,7 @@
 <!DOCTYPE html>
  <html> 
 <head> 
-<title>Python Club</title> 
+<title>Python Club Winter 2021</title> 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> 
 <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'> 
@@ -13,16 +13,19 @@
    <nav class="navbar navbar-default"> 
    <div class="container-fluid">
 <div class="navbar-header"> 
-<a class="navbar-brand" href="{% url 'index' %}">Python Club</a> 
+<a class="navbar-brand" href="{% url 'index' %}">PythonClub</a> 
 </div> 
+
 <ul class="nav navbar-nav"> 
-<li>Dummy</li>
+<li><a href="{% url 'resource' %}"> Resource</a></li>
 <li>Dummy</li> 
 </ul> 
 </div> 
 </nav> 
 <div class="container-fluid"> 
 {% block content %} 
+
+
 
 {% endblock content %} 
 </div> 
