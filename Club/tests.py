@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib.auth.models  import User
 from .models import Resource, MeetingMinutes, Meetings, Event
 import datetime
+import .forms MeetingsForm
 
 class MeetingsTest(TestCase):
     def setUp(self):
@@ -37,3 +38,28 @@ class ResourceTest(TestCase):
         self.assertEqual(self.resource.discountPrice(),disc)
         
 
+    class NewMeetingForm(TestCase):
+         #valid form data
+         def test_productform(self):
+             data={'meetingtitle': 'club Meeting',
+                   'meetingdate': '2021-1-5',
+                   'meetingtime': '11 A.M.',
+                   'meetinglocation': 'seattle',
+                   'meetgingagenda': 'discuss python'
+             }
+                    
+             
+             #test is failing
+            form=NewMeetingForm (data)
+            self.assertEquals(form.is_valid)
+
+        def test_Meetingform_Invalid(Self)
+         data={'meetingtitle': 'club Meeting',
+                   'meetingdate': 'Janauary 2, 2020',
+                   'meetingtime': '11 A.M.',
+                   'meetinglocation': 'seattle',
+            
+             }
+
+             form=NewMeetingForm (data)
+            self.assertFalse(form.is_valid)
