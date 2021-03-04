@@ -57,7 +57,7 @@ class ResourceTest(TestCase):
          data={'meetingtitle': 'club Meeting',
                    'meetingdate': 'Janauary 2, 2020',
                    'meetingtime': '11 A.M.',
-                   'meetinglocation': 'seattle',
+                   'meetinglocation': 'seattle'
             
              }
 
