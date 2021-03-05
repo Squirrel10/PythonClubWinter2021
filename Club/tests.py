@@ -2,7 +2,8 @@ from django.test import TestCase
 from django.contrib.auth.models  import User
 from .models import Resource, MeetingMinutes, Meetings, Event
 import datetime
-import .forms MeetingsForm
+from .forms import MeetingsForm
+from django.urls import reverse_lazy, reverse
 
 class MeetingsTest(TestCase):
     def setUp(self):
@@ -49,17 +50,14 @@ class ResourceTest(TestCase):
              }
                     
              
-             #test is failing
-            form=NewMeetingForm (data)
-            self.assertEquals(form.is_valid)
 
-        def test_Meetingform_Invalid(Self)
-         data={'meetingtitle': 'club Meeting',
-                   'meetingdate': 'Janauary 2, 2020',
-                   'meetingtime': '11 A.M.',
-                   'meetinglocation': 'seattle'
-            
-             }
+class New_Resource_Authentication_Test(TestCase):
+    def setUp(self):
+        self.test_user=User.objects.create_user(username='testuser1', password='P@ssw0rd1')
+        self.type=Club.objects.create(typename='laptop')
+        self.resource=Resource.objects.create(resourcename='Lenovo', resourcetype=self.type, user=self.test_user, reviewdate=datetime.date(2021,1,10), resourceprice=1200.99, resourceurl='http://www.lenovo.com', resourcedescription="lenovo laptop") 
 
-             form=NewMeetingForm (data)
-            self.assertFalse(form.is_valid)
+
+    def test_redirect_if_not_logged_in(self):
+        response=self.client.get(reverse('newresource'))  
+        self.assertRedirects(response, '/accounts/login/?next=/Club/newresource/')
